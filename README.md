@@ -1,5 +1,41 @@
 # EAO
 
+## Important: Branch & Pull Request Workflow
+
+Please use the following steps for working on this project:
+
+* Fork this repo
+* Clone your fork to your local machine
+* Go into branch master
+* Set up your upstreams
+
+```bash
+git remote add upstream https://github.com/bcgov/eao-inspections-web.git
+git fetch upstream
+```
+
+* Create a branch for your work
+* Checkin, commit, push to origin
+* Create a PR
+
+Reviewers and maintainers - DO NOT MERGE the PR via GitHub, let the pipeline do this.  DO NOT manually clean up branches, let the pipeline do this.  Doing either of these manually will break the pipeline and cause all kinds of problems.
+
+Also, be AWARE: if Jenkins reboots while partially through the pipeline, the input stages will be permanently broken and the job will need to be cancelled and re-run in order for the inputs to work again.
+
+Here are the steps to follow:
+
+* Go into the tools environment in OpenShift
+* Find the Jenkins deployment and click on the URL route upper right of the deployment
+* Authenticate to Jenkins
+* Find the PR (the BlueOcean view is nice)
+* There are several stages to go through so make sure you do not skip any
+* Approve or Cancel each stage (you may need to exit the page and reload in order to see the next input prompt)
+* If you approve going out to prod, don't forget to approve the final cleanup stage
+
+This will get your changes to the correct environments and dispose branches and resources properly.
+
+## About
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
 
 ## Development server
